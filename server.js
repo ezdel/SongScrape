@@ -16,7 +16,16 @@ app.use(express.static('public'));
 
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://heroku_dhd6lzcs:8q77b6jjkeqioubof295eviahc@ds027819.mlab.com:27819/heroku_dhd6lzcs');
+//var databaseUri = 'mongodb://localhost/songscrape';
+
+if (process.env.MONGODB_URI) {
+	mongoose.connect(process.env.MONGODB_URI);
+}
+//mongoose.connect('mongodb://heroku_dhd6lzcs:8q77b6jjkeqioubof295eviahc@ds027819.mlab.com:27819/heroku_dhd6lzcs');
+else {
+mongoose.connect('mongodb://localhost/songscrape');
+}
+
 var db = mongoose.connection;
 
 // show any mongoose errors
