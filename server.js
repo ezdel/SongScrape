@@ -16,7 +16,7 @@ app.use(express.static('public'));
 
 
 // Database configuration with mongoose
-mongoose.connect('mongodb://localhost/songscrape');
+mongoose.connect('mongodb://heroku_dhd6lzcs:8q77b6jjkeqioubof295eviahc@ds027819.mlab.com:27819/heroku_dhd6lzcs');
 var db = mongoose.connection;
 
 // show any mongoose errors
