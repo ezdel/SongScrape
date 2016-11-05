@@ -2,13 +2,11 @@
 var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
-//var logger = require('morgan');
 var mongoose = require('mongoose');
 var request = require('request'); 
 var cheerio = require('cheerio');
 
 
-//app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
   extended: false
 }));
@@ -42,7 +40,7 @@ var Song = require('./models/Song.js');
 
 // Simple index route
 app.get('/', function(req, res) {
-  res.send(index.html);
+  	res.send(index.html);
 });
 
 // A GET request to scrape the billboard website.
@@ -80,8 +78,6 @@ app.get('/scrape', function(req, res) {
 				    console.log(doc);
 				  }
 				});
-
-
     });
   });
   // tell the browser that we finished scraping the text.

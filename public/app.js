@@ -3,7 +3,7 @@ $.getJSON('/songs', function(data) {
   // for each one
   for (var i = 0; i<data.length; i++){
     // display the apropos information on the page
-    $('#songs').append('<p data-id="' + data[i]._id + '">'+ data[i].position + '<br />' + data[i].title + '<br />' + data[i].artist + '<br />' + data[i].link + '</p>');
+    $('#songs').append('<p data-id="' + data[i]._id + '">'+ '#' + data[i].position + '<br />' + data[i].title + '<br />' + data[i].artist + '<br />' + '<a href="' + data[i].link + '" target= _blank>' + data[i].link + '</a></p>');
   }
 });
 
@@ -25,8 +25,6 @@ $(document).on('click', 'p', function(){
       console.log(data);
       // the title of the article
       $('#notes').append('<h2>' + data.title + '</h2>'); 
-      // an input to enter a new title
-      $('#notes').append('<input id="titleinput" name="title" >'); 
       // a textarea to add a new note body
       $('#notes').append('<textarea id="bodyinput" name="body"></textarea>'); 
       // a button to submit a new note, with the id of the article saved to it
@@ -34,8 +32,6 @@ $(document).on('click', 'p', function(){
 
       // if there's a note in the article
       if(data.note){
-        // place the title of the note in the title input
-        $('#titleinput').val(data.note.title);
         // place the body of the note in the body textarea
         $('#bodyinput').val(data.note.body);
       }
@@ -52,7 +48,6 @@ $(document).on('click', '#savenote', function(){
     method: "POST",
     url: "/songs/" + thisId,
     data: {
-      title: $('#titleinput').val(), // value taken from title input
       body: $('#bodyinput').val() // value taken from note textarea
     }
   })
@@ -65,6 +60,5 @@ $(document).on('click', '#savenote', function(){
     });
 
   // Also, remove the values entered in the input and textarea for note entry
-  $('#titleinput').val("");
   $('#bodyinput').val("");
 });

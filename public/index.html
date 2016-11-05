@@ -5,22 +5,28 @@
   <title>Document</title>
   <style>
     body{
-      /*background-color: #DECADE*/
-      background-color: #F2F6D0
+      background-image: url("./record.png");
+      background-position: center 50px;
+      background-repeat: no-repeat;
+      color: red;
     }
     #wrapper{
       width:960px;
       margin: 0 auto;
       padding-top: 5%;
     }
-    #articles{
+    #songs{
       width:60%;
       height:700px;
+      color: orange;
+      text-shadow: 1px 1px blue;
+      font-size: 24px;
       display:inline-block;
       overflow: auto;
     }
     #notes{
       width:30%;
+      color: green;
       float:right;
     }
     textarea, input{
@@ -40,7 +46,7 @@
 </head>
 <body>
   <div id="wrapper">
-    <h1>Billboard Hot 100 Song Scraper</h1>
+    <h1>BILLBOARD HOT 100 SONG SCRAPER</h1>
     <h2><i>These songs are HOT HOT HOT!</i></h2>
     <div id="songs"></div>
     <div id="notes"></div>
