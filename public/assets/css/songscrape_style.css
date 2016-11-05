@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <style>
-    body{
+body{
       /*background-color: #DECADE*/
-      background-color: #F2F6D0
+      background-image: url("/img/record.png")
     }
     #wrapper{
       width:960px;
@@ -36,16 +30,3 @@
       height:200px;
       font-size: 18px;
     }
-  </style>
-</head>
-<body>
-  <div id="wrapper">
-    <h1>Billboard Hot 100 Song Scraper</h1>
-    <h2><i>These songs are HOT HOT HOT!</i></h2>
-    <div id="songs"></div>
-    <div id="notes"></div>
-  </div>
-  <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-  <script src="app.js"></script>
-</body>
-</html>

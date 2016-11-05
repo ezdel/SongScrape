@@ -12,6 +12,12 @@ var cheerio = require('cheerio');
 app.use(bodyParser.urlencoded({
   extended: false
 }));
+var exphbs = require('express-handlebars');
+app.engine('handlebars', exphbs({
+	defaultLayout: 'main'
+}));
+app.set('view engine', 'handlebars');
+
 
 // make public a static dir
 app.use(express.static('public'));
@@ -41,12 +47,12 @@ var Song = require('./models/Song.js');
 // ======
 
 // Simple index route
-app.get('/', function(req, res) {
-  res.send(index.html);
-});
+// app.get('/', function(req, res) {
+//   res.send(index);
+// });
 
 // A GET request to scrape the billboard website.
-app.get('/scrape', function(req, res) {
+app.get('/', function(req, res) {
 	// first, we grab the body of the html with request
   request('http://www.billboard.com/charts/hot-100', function(error, response, html) {
   	// then, we load that into cheerio and save it to $ for a shorthand selector
@@ -67,6 +73,7 @@ app.get('/scrape', function(req, res) {
 				// using our Song model, create a new entry.
 				// Notice the (result):
 				// This effectively passes the result object to the entry (and the title and link)
+				//res.send(result);
 				var entry = new Song (result);
 
 				// now, save that entry to the db
@@ -85,7 +92,6 @@ app.get('/scrape', function(req, res) {
     });
   });
   // tell the browser that we finished scraping the text.
-  res.redirect("/");
 });
 
 // this will get the articles we scraped from the mongoDB
